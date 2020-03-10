@@ -152,6 +152,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-在服务器上搭建自己的网站（linux）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%88linux%EF%BC%89/">在服务器上搭建自己的网站（linux）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/10/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%88linux%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-03-10T12:49:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在服务器上搭建自己的网站（linux）"><a href="#在服务器上搭建自己的网站（linux）" class="headerlink" title="在服务器上搭建自己的网站（linux）"></a>在服务器上搭建自己的网站（linux）</h1><h3 id="购买腾讯云服务器"><a href="#购买腾讯云服务器" class="headerlink" title="购买腾讯云服务器"></a>购买腾讯云服务器</h3><blockquote>
+<p><a href="https://cloud.tencent.com/" target="_blank" rel="noopener">https://cloud.tencent.com/</a></p>
+</blockquote>
+<h3 id="进入控制台"><a href="#进入控制台" class="headerlink" title="进入控制台"></a>进入控制台</h3><blockquote>
+<p><a href="https://console.cloud.tencent.com/" target="_blank" rel="noopener">https://console.cloud.tencent.com/</a></p>
+</blockquote>
+<h3 id="关闭服务器主机"><a href="#关闭服务器主机" class="headerlink" title="关闭服务器主机"></a>关闭服务器主机</h3><p>1单击云服务器<br>2.找到购买的服务器主机，<br>3.然后点击关机</p>
+<h3 id="设置“SSH密钥”"><a href="#设置“SSH密钥”" class="headerlink" title="设置“SSH密钥”"></a>设置“SSH密钥”</h3><p>1.点击“SSH密钥”<br>2.点击 创建密钥 –&gt; 随便输个好记的名称 –&gt; 确定<br>3.点击 下载密钥到本地 –&gt; 记住保存的位置<br>4.选中刚才创建的密钥 –&gt; 绑定/解绑实例 –&gt; 选择刚才关机的服务器 –&gt; 确定</p>
+<p>然后启动服务器主机</p>
+<h3 id="配置“Xshell”"><a href="#配置“Xshell”" class="headerlink" title="配置“Xshell”"></a>配置“Xshell”</h3><p>1.下载 xshell</p>
+<blockquote>
+<p><a href="http://xiazai.xshellcn.com/trial/Xshell-6.0.0125_wm.exe" target="_blank" rel="noopener">http://xiazai.xshellcn.com/trial/Xshell-6.0.0125_wm.exe</a></p>
+</blockquote>
+<p>2.安装 xshell<br>3.运行 xshell<br>4.单击 文件 –&gt; 新建 –&gt; 随便输入一个名称 –&gt; 在主机那栏输入服务器的公网地址 –&gt; 点击左边“用户身份验证”–&gt; 方法选择“public key”–&gt; 输入用户名（centos默认为root）–&gt; 用户密钥浏览本地文件，选择刚才下载的SSH密钥 –&gt; 确定<br>5.双击刚才新建的会话（xshell会话的灯变成绿色，就表示连上了）</p>
+<h3 id="配置宝塔Linux端口"><a href="#配置宝塔Linux端口" class="headerlink" title="配置宝塔Linux端口"></a>配置宝塔Linux端口</h3><p>1.在腾讯云服务器网页中选择“安全组”–&gt; 选择新建 –&gt; 自定义规则，随便加点备注看得懂看就行 –&gt; 然后进入这条规则的配置（保持网页）<br>2.下载宝塔进出站规则文件“g_input_rules”和“sg_output_rules”到本地</p>
+<blockquote>
+<p><a href="https://www.bt.cn/bbs/thread-1229-1-1.html" target="_blank" rel="noopener">https://www.bt.cn/bbs/thread-1229-1-1.html</a></p>
+</blockquote>
+<p>3.回到安全组的配置<br>4.分别导入“入站”和“出站”规则<br>5.点击“关联实例”<br>6.选择“新增关联”–&gt; 选择刚才配置的服务器 –&gt; 确定</p>
+<h3 id="安装宝塔"><a href="#安装宝塔" class="headerlink" title="安装宝塔"></a>安装宝塔</h3><p>1.进入宝塔服务器官网</p>
+<blockquote>
+<p><a href="https://www.bt.cn/" target="_blank" rel="noopener">https://www.bt.cn/</a></p>
+</blockquote>
+<p>2.选择 宝塔linux面板 –&gt; 立即安装<br>3.复制安装命令</p>
+<blockquote>
+<p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://download.bt.cn/install/install_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
+</blockquote>
+<hr>
+<p>ps：网址<a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener">https://www.bt.cn/bbs/thread-19376-1-1.html</a></p>
+<hr>
+<p>4.切换到“xshell”窗口 –&gt; 粘贴命令 –&gt; 回车<br>5.等待安装完成<br>6.在xshell中找到安装完成后出现的 Bt-Panel、username、password三行复制下来，新建一个txt记下来，妥善保管。<br>7.将“Bt-Panel”后出现的网址复制到浏览器里打开（这就是对应宝塔面板的url）<br>8.“username”、“password”后的内容分别就是登陆的账号和密码</p>
+<h3 id="配置宝塔"><a href="#配置宝塔" class="headerlink" title="配置宝塔"></a>配置宝塔</h3><p>1.登录宝塔面板<br>2.选择 网站 –&gt; 添加网站 –&gt; 域名直接输入服务器公网IP地址 –&gt; 数据库采用MySQL即可 –&gt; 确定<br>3.选择文件 –&gt; 进入以公网IP地址命名的文件夹 –&gt; 将本地计算机上做好的网站上传到该目录即可</p>
+<h3 id="测试网站"><a href="#测试网站" class="headerlink" title="测试网站"></a>测试网站</h3><p>将服务器公网IP地址复制到浏览器地址栏 –&gt; 回车</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/10/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%EF%BC%88linux%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo部署时ERROR Deployer not found解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
